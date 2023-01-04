@@ -132,7 +132,7 @@ best_student_two.rate_hw(lecturer_two, 'Python', 1)
 best_student_two.rate_hw(lecturer_two, 'Python', 1)
 best_student_two.rate_hw(lecturer_two, 'Python', 7)
 
-# ?
+# original student
 best_student = Student('Ruoy', 'Eman', 'your_gender')
 best_student.courses_in_progress += ['Python']
 
