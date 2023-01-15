@@ -87,6 +87,13 @@ def mid_grades(student_list, course, class_name):
     for student in student_list:
         summ += sum(student.__dict__['grades'][course])
         quantity += len(student.__dict__['grades'][course])
+  # lecturers = [lecturer, lecturer_one, lecturer_two]
+def mid_grades(student_list, course, class_name):
+    summ = 0
+    quantity = 0
+    for student in student_list:
+        summ += sum(student.__dict__['grades'][course])
+        quantity += len(student.__dict__['grades'][course])
 
     return f"Средняя оценка за курс {course} у всех {class_name}: {round(summ / quantity, 2)}"
     def __eq__(self, other):
@@ -170,3 +177,7 @@ lecturers = [lecturer, lecturer_one, lecturer_two]
 # print(mid_grades(lecturers, 'Python', 'лекторов'))
 
 print(best_student_one.function(best_student_two))
+print(best_student>lecturer_two)
+print(best_student<lecturer_two)
+print(best_student.mid_grade())
+print(lecturer_two.mid_grade())
