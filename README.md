@@ -1,4 +1,3 @@
-# oop-Mentors-and-students
 class Mentor:
     def __init__(self, name, surname):
         self.name = name
@@ -29,6 +28,20 @@ class Lecturer(Mentor):
     def __str__(self):
         return f"ЛЕКТОР:\n{self.name}\n{self.surname}\nСредняя оценка за лекции:{self.mid_grade()}"
 
+    def __eq__(self, other):
+        return self.mid_grade() == other.mid_grade()
+
+    # !=
+    def __ne__(self, other):
+        return self.mid_grade() != other.mid_grade()
+
+    # <
+    def __lt__(self, other):
+        return self.mid_grade() < other.mid_grade()
+
+    # >
+    def __gt__(self, other):
+        return self.mid_grade() > other.mid_grade()
 
 class Student:
     def __init__(self, name, surname, gender):
@@ -43,6 +56,21 @@ class Student:
     def __str__(self):
         return f"СТУДЕНТ:\n{self.name}\n{self.surname}\nСредняя оценка за домашние задания: {self.mid_grade()}\n" \
                f"Курсы в процессе изучения:{self.courses_in_progress}\nЗавершенные курсы:{self.finished_courses}"
+
+    def __eq__(self, other):
+        return self.mid_grade() == other.mid_grade()
+
+    # !=
+    def __ne__(self, other):
+        return self.mid_grade() != other.mid_grade()
+
+    # <
+    def __lt__(self, other):
+        return self.mid_grade() < other.mid_grade()
+
+    # >
+    def __gt__(self, other):
+        return self.mid_grade() > other.mid_grade()
 
     def rate_hw(self, lecturer, course, grade):
         if isinstance(lecturer,
@@ -81,35 +109,22 @@ class Reviewer(Mentor):
 
 # Индексация, доступ к элементу (словаря, списка) по индексу
 # students = [best_student, best_student_one, best_student_two]
-def mid_grades(student_list, course, class_name):
+def mid_grades(student_list, course):
     summ = 0
     quantity = 0
     for student in student_list:
         summ += sum(student.__dict__['grades'][course])
         quantity += len(student.__dict__['grades'][course])
-  # lecturers = [lecturer, lecturer_one, lecturer_two]
-def mid_grades(student_list, course, class_name):
+    return f"Средняя оценка за курс {course} у всех студентов: {round(summ / quantity, 2)}"
+# lecturers = [lecturer, lecturer_one, lecturer_two]
+def mid_grades_lecturers(lecturer_list, course):
     summ = 0
     quantity = 0
-    for student in student_list:
+    for student in lecturer_list:
         summ += sum(student.__dict__['grades'][course])
         quantity += len(student.__dict__['grades'][course])
 
-    return f"Средняя оценка за курс {course} у всех {class_name}: {round(summ / quantity, 2)}"
-    def __eq__(self, other):
-        return self.mid_grade() == other.mid_grade()
-
-    # !=
-    def __ne__(self, other):
-        return self.mid_grade() != other.mid_grade()
-
-    # <
-    def __lt__(self, other):
-        return self.mid_grade() < other.mid_grade()
-
-    # >
-    def __gt__(self, other):
-        return self.mid_grade() > other.mid_grade()
+    return f"Средняя оценка за курс {course} у всех лекторов: {round(summ / quantity, 2)}"
 
 
 # lecturer 1
@@ -181,3 +196,5 @@ print(best_student>lecturer_two)
 print(best_student<lecturer_two)
 print(best_student.mid_grade())
 print(lecturer_two.mid_grade())
+print(mid_grades_lecturers(lecturers , "Python"))
+print(mid_grades(students, "Python"))
