@@ -89,6 +89,20 @@ def mid_grades(student_list, course, class_name):
         quantity += len(student.__dict__['grades'][course])
 
     return f"Средняя оценка за курс {course} у всех {class_name}: {round(summ / quantity, 2)}"
+    def __eq__(self, other):
+        return self.mid_grade() == other.mid_grade()
+
+    # !=
+    def __ne__(self, other):
+        return self.mid_grade() != other.mid_grade()
+
+    # <
+    def __lt__(self, other):
+        return self.mid_grade() < other.mid_grade()
+
+    # >
+    def __gt__(self, other):
+        return self.mid_grade() > other.mid_grade()
 
 
 # lecturer 1
